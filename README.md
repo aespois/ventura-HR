@@ -1,2 +1,2 @@
-# infnet_projeto_java
+# Ventura RH
 Projeto de Bloco: Desenvolvimento Java

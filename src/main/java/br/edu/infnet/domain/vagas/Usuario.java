@@ -196,7 +196,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.teste.Usuarios[ id=" + id + " ]";
+        return "br.edu.infnet.domain.vagas.Usuario[ id=" + id + " ]";
     }
     
 }

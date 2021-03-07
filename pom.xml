@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>SDIApp</artifactId>
+	<artifactId>ventura-hr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SDIApp</name>
+	<name>Ventura HR</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>

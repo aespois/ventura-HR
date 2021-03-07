@@ -1,4 +1,4 @@
-package com.example.teste;
+package br.edu.infnet.venturahr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

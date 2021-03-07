@@ -1,4 +1,4 @@
-package com.example.teste;
+package br.edu.infnet.domain.vagas;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 
-@Table(catalog = "sdi_test", schema = "", uniqueConstraints = {
+@Table(catalog = "ventura_hr", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cpf"}),
     @UniqueConstraint(columnNames = {"email"})})
 
@@ -34,7 +34,7 @@ import javax.persistence.UniqueConstraint;
     @NamedQuery(name = "Usuarios.findByCnpj", query = "SELECT u FROM Usuarios u WHERE u.cnpj = :cnpj"),
     @NamedQuery(name = "Usuarios.findByTipo", query = "SELECT u FROM Usuarios u WHERE u.tipo = :tipo")})
 
-public class Usuarios implements Serializable {
+public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -78,14 +78,14 @@ public class Usuarios implements Serializable {
     @Column(nullable = false)
     private Character tipo;
 
-    public Usuarios() {
+    public Usuario() {
     }
 
-    public Usuarios(Integer id) {
+    public Usuario(Integer id) {
         this.id = id;
     }
 
-    public Usuarios(Integer id, String nome, String telefone, String email, String senha, String cpf, Character tipo) {
+    public Usuario(Integer id, String nome, String telefone, String email, String senha, String cpf, Character tipo) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -184,11 +184,10 @@ public class Usuarios implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuarios)) {
+        if (!(object instanceof Usuario)) {
             return false;
         }
-        Usuarios other = (Usuarios) object;
+        Usuario other = (Usuario) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

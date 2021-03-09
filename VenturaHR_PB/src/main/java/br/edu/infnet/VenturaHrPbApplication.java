@@ -13,27 +13,49 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class VenturaHrPrototipoApplication implements CommandLineRunner {
+public class VenturaHrPbApplication implements CommandLineRunner {
     
-    private Logger log = LoggerFactory.getLogger(VenturaHrPrototipoApplication.class);
+    private final String NOT_FOUND = "404";
+    private Logger log = LoggerFactory.getLogger(VenturaHrPbApplication.class);
     @Autowired
     private UsuarioService usuarioService;
     
     public static void main(String[] args) {
-            SpringApplication.run(VenturaHrPrototipoApplication.class, args);
+            SpringApplication.run(VenturaHrPbApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        
+        // Teste de Login
         Usuario empresa = this.logarNoSite("ana@espois.com", "123");
+        
+        if (empresa != null) {
             log.info(empresa.getId() + " - " + empresa.getNome());
+        }            
+            
+        // Teste de Criar Conta
+        Usuario usuarioTeste = new Usuario();
+        Usuario gravado = this.manterUsuario(usuarioTeste);
+        
+        // Teste de Alterar Conta
+        
     }
 
     private Usuario logarNoSite(String email, String senha) {
         Usuario retorno = null;
         
         if (StringUtils.isNotBlank(email) && StringUtils.isNotBlank(senha)) {
-            Usuario usuario = usuarioService.obterPorEmail(email);
+            Usuario usuario = null;
+            
+            try {
+                usuario = usuarioService.obterPorEmail(email);
+            } catch (Exception e) {
+                //log.info(e.getMessage());
+                if (e.getMessage().contains(NOT_FOUND)) {
+                    log.info("Empresa Não Encontrada");
+                }
+            }           
             
             if (usuario != null && senha.equals(usuario.getSenha())) {
                 retorno = usuario;

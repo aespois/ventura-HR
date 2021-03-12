@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.infnet</groupId>
-	<artifactId>VenturaHR_Usuario</artifactId>
+	<artifactId>Usuario_VenturaHR</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>VenturaHR_Usuario</name>
+	<name>Usuario_VenturaHR</name>
 	<description>Microsserviço de Usuário + Login</description>
 	<properties>
 		<java.version>1.8</java.version>

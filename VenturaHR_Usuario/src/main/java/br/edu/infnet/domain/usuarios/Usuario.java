@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "usuarios", catalog = "ventura_hr", schema = "", uniqueConstraints = {
+@Table(name = "usuarios", catalog = "db_venturahr", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cpf"}),
     @UniqueConstraint(columnNames = {"email"}),
     @UniqueConstraint(columnNames = {"cnpj"})})

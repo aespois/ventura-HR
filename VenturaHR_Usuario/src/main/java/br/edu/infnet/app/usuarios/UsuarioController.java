@@ -20,7 +20,7 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioRepository usuarioRepository;
-    
+       
     //@GetMapping
     //public Iterable<Usuario> listarUsuarios() {
     //    return usuarioRepository.findAll();

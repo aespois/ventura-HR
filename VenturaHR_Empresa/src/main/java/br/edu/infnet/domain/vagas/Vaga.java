@@ -1,7 +1,9 @@
 package br.edu.infnet.domain.vagas;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,20 +30,21 @@ public class Vaga implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    
     private Integer id;
+    
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
-    
     private String cargo;
+    
     @Basic(optional = false)
     @Column(name = "forma_contratacao", nullable = false, length = 45)
-    
     private String formaContratacao;
-    @Basic(optional = false)
-    @Column(name = "id_usuario", nullable = false)
     
-    private int idUsuario;
+    @Column(name = "id_usuario", nullable = false)
+    private Integer idUsuario;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaga")
+    private List<Criterio> criterioList;
 
     public Vaga() {
     }
@@ -86,6 +90,14 @@ public class Vaga implements Serializable {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public List<Criterio> getCriterioList() {
+        return criterioList;
+    }
+
+    public void setCriterioList(List<Criterio> criterioList) {
+        this.criterioList = criterioList;
     }
 
     @Override

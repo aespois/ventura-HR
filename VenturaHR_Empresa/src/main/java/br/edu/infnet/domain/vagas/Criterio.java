@@ -1,5 +1,6 @@
 package br.edu.infnet.domain.vagas;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -18,8 +21,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Criterio.findById", query = "SELECT c FROM Criterio c WHERE c.id = :id"),
     @NamedQuery(name = "Criterio.findByDescricao", query = "SELECT c FROM Criterio c WHERE c.descricao = :descricao"),
     @NamedQuery(name = "Criterio.findByPerfil", query = "SELECT c FROM Criterio c WHERE c.perfil = :perfil"),
-    @NamedQuery(name = "Criterio.findByPeso", query = "SELECT c FROM Criterio c WHERE c.peso = :peso"),
-    @NamedQuery(name = "Criterio.findByIdVaga", query = "SELECT c FROM Criterio c WHERE c.idVaga = :idVaga")})
+    @NamedQuery(name = "Criterio.findByPeso", query = "SELECT c FROM Criterio c WHERE c.peso = :peso")})
 
 public class Criterio implements Serializable {
 
@@ -28,24 +30,24 @@ public class Criterio implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    
     private Integer id;
+    
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
-    
     private String descricao;
+    
     @Basic(optional = false)
     @Column(nullable = false)
-    
     private int perfil;
+    
     @Basic(optional = false)
     @Column(nullable = false)
-    
     private int peso;
-    @Basic(optional = false)
-    @Column(name = "id_vaga", nullable = false)
     
-    private int idVaga;
+    @JsonIgnore
+    @JoinColumn(name = "id_vaga", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private Vaga vaga;
 
     public Criterio() {
     }
@@ -54,12 +56,11 @@ public class Criterio implements Serializable {
         this.id = id;
     }
 
-    public Criterio(Integer id, String descricao, int perfil, int peso, int idVaga) {
+    public Criterio(Integer id, String descricao, int perfil, int peso) {
         this.id = id;
         this.descricao = descricao;
         this.perfil = perfil;
         this.peso = peso;
-        this.idVaga = idVaga;
     }
 
     public Integer getId() {
@@ -94,12 +95,12 @@ public class Criterio implements Serializable {
         this.peso = peso;
     }
 
-    public int getIdVaga() {
-        return idVaga;
+    public Vaga getVaga() {
+        return vaga;
     }
 
-    public void setIdVaga(int idVaga) {
-        this.idVaga = idVaga;
+    public void setVaga(Vaga vaga) {
+        this.vaga = vaga;
     }
 
     @Override
@@ -111,7 +112,6 @@ public class Criterio implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Criterio)) {
             return false;
         }
@@ -126,5 +126,5 @@ public class Criterio implements Serializable {
     public String toString() {
         return "br.edu.infnet.domain.vagas.Criterio[ id=" + id + " ]";
     }
-    
+
 }

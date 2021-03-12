@@ -1,0 +1,6 @@
+br\edu\infnet\domain\vagas\Criterio.class
+br\edu\infnet\domain\vagas\Vaga.class
+br\edu\infnet\VenturaHrPbApplication.class
+br\edu\infnet\infra\vagas\VagaService.class
+br\edu\infnet\domain\usuarios\Usuario.class
+br\edu\infnet\infra\usuarios\UsuarioService.class

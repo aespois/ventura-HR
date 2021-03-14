@@ -20,6 +20,7 @@ CREATE TABLE `vagas` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`id_usuario` int NOT NULL,
 	`cargo` varchar(45) NOT NULL,
+	`cidade` varchar(100) NOT NULL,
 	`forma_contratacao` varchar(45) NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `fk_usuarios_idx` (`id_usuario`),

@@ -16,4 +16,10 @@ public interface VagaService {
     
     @GetMapping(path = {"/usuario/{idUsuario}"})
     List<Vaga> listarPorIdUsuario(@PathVariable int idUsuario);
+    
+    @GetMapping(path = "/cargo/{pesquisa}")
+    List<Vaga> pesquisarVagasPorCargo(@PathVariable String pesquisa);
+    
+    @GetMapping(path = "/cidade/{pesquisa}")
+    List<Vaga> pesquisarVagasPorCidade(@PathVariable String pesquisa);
 }

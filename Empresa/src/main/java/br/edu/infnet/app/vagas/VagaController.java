@@ -20,7 +20,7 @@ public class VagaController {
     @Autowired
     private VagaRepository vagaRepository;
     
-    @GetMapping
+    @GetMapping // fazer o try/cath
     public ResponseEntity listarVagas() {
         
         ResponseEntity retorno = ResponseEntity.notFound().build();
@@ -32,19 +32,21 @@ public class VagaController {
         return retorno;
     }
     
-    @GetMapping(path = "/usuario/{idUsuario}")
+    @GetMapping(path = "/usuario/{idUsuario}") 
     public ResponseEntity listarPorIdUsuario(@PathVariable int idUsuario) {
         
         ResponseEntity retorno = ResponseEntity.notFound().build();
-        List<Vaga> lista = vagaRepository.findByIdUsuario(idUsuario);
-        
-        if(!lista.isEmpty()) {
-            retorno = ResponseEntity.ok().body(lista);
+        try {
+            List<Vaga> lista = vagaRepository.findByIdUsuario(idUsuario);
+            if(!lista.isEmpty()) {
+                retorno = ResponseEntity.ok().body(lista);
+            }
+        } catch (Exception e) {
         }
         return retorno;
     }
     
-    @PostMapping
+    @PostMapping // fazer o try/cath
     public ResponseEntity publicarVaga(@RequestBody Vaga vaga) {
         
         ResponseEntity retorno = ResponseEntity.badRequest().build();
@@ -62,4 +64,31 @@ public class VagaController {
         return retorno;
     }
     
+    @GetMapping(path = "/cargo/{pesquisa}")
+    public ResponseEntity pesquisarVagasPorCargo(@PathVariable String pesquisa) {
+        
+        ResponseEntity retorno = ResponseEntity.notFound().build();
+        try {
+            List<Vaga> lista = vagaRepository.findByCargoContainingIgnoreCase(pesquisa);
+            if(!lista.isEmpty()) {
+                retorno = ResponseEntity.ok().body(lista);
+            }
+        } catch (Exception e) {
+        }
+        return retorno;
+    }
+    
+    @GetMapping(path = "/cidade/{pesquisa}")
+    public ResponseEntity pesquisarVagasPorCidade(@PathVariable String pesquisa) {
+        
+        ResponseEntity retorno = ResponseEntity.notFound().build();
+        try {
+            List<Vaga> lista = vagaRepository.findByCidadeContainingIgnoreCase(pesquisa);
+            if(!lista.isEmpty()) {
+                retorno = ResponseEntity.ok().body(lista);
+            }
+        } catch (Exception e) {
+        }
+        return retorno;
+    }
 }

@@ -20,6 +20,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Vaga.findAll", query = "SELECT v FROM Vaga v"),
     @NamedQuery(name = "Vaga.findById", query = "SELECT v FROM Vaga v WHERE v.id = :id"),
     @NamedQuery(name = "Vaga.findByCargo", query = "SELECT v FROM Vaga v WHERE v.cargo = :cargo"),
+    @NamedQuery(name = "Vaga.findByCidade", query = "SELECT v FROM Vaga v WHERE v.cidade = :cidade"),
     @NamedQuery(name = "Vaga.findByFormaContratacao", query = "SELECT v FROM Vaga v WHERE v.formaContratacao = :formaContratacao"),
     @NamedQuery(name = "Vaga.findByIdUsuario", query = "SELECT v FROM Vaga v WHERE v.idUsuario = :idUsuario")})
 
@@ -35,6 +36,10 @@ public class Vaga implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String cargo;
+    
+    @Basic(optional = false)
+    @Column(nullable = false, length = 100)
+    private String cidade;
     
     @Basic(optional = false)
     @Column(name = "forma_contratacao", nullable = false, length = 45)
@@ -53,9 +58,10 @@ public class Vaga implements Serializable {
         this.id = id;
     }
 
-    public Vaga(Integer id, String cargo, String formaContratacao, int idUsuario) {
+    public Vaga(Integer id, String cargo, String cidade, String formaContratacao, int idUsuario) {
         this.id = id;
         this.cargo = cargo;
+        this.cidade = cidade;
         this.formaContratacao = formaContratacao;
         this.idUsuario = idUsuario;
     }
@@ -74,6 +80,14 @@ public class Vaga implements Serializable {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getFormaContratacao() {

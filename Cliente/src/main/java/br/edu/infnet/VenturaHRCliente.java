@@ -22,8 +22,11 @@ public class VenturaHRCliente implements CommandLineRunner {
     
     private final String NOT_FOUND = "404";
     private Logger log = LoggerFactory.getLogger(VenturaHRCliente.class);
+    
     @Autowired
     private UsuarioService usuarioService;
+    
+    @Autowired
     private VagaService vagaService;
     
     public static void main(String[] args) {
@@ -33,52 +36,83 @@ public class VenturaHRCliente implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        // Teste de Login
-        Usuario empresa = this.logarNoSite("ana@espois.com", "123");
+        // Teste de Login - Empresa
+        log.info("--- Login Empresa ---");
+        Usuario empresa = this.logarNoSite("barbara@espois.com", "321");
         if (empresa != null && empresa.getTipo() == 'E') {
-            
             log.info(empresa.getId() + " - " + empresa.getNome());
             
             // Teste de Criação de Vaga
-            Vaga v1 = new Vaga();
-            v1.setCargo("Scrum Master");
-            //vaga.setCidade("Rio de Janeiro - RJ");
-            v1.setFormaContratacao("CLT");
-            v1.setIdUsuario(empresa.getId());
+            log.info("--- Publicação de Vaga ---");
+            //Vaga vaga = new Vaga();
+            //vaga.setCargo("Desenvolvedor FullStack");
+            //vaga.setCidade("Remoto");
+            //vaga.setFormaContratacao("PJ");
+            //vaga.setIdUsuario(empresa.getId());
             
-            // Teste de Criação de Critérios
-            Criterio c1 = new Criterio();
-            c1.setDescricao("Proficiência em Métodos Ágeis");
-            c1.setPerfil(5);
-            c1.setPeso(5);
-            c1.setVaga(v1);
+            // Criação de Critérios
+            //Criterio c1 = new Criterio();
+            //c1.setDescricao("Back e Front-end");
+            //c1.setPerfil(1);
+            //c1.setPeso(2);
+            //c1.setVaga(vaga);
             
-            Criterio c2 = new Criterio();
-            c2.setDescricao("Língua Inglesa");
-            c2.setPerfil(4);
-            c2.setPeso(4);
-            c2.setVaga(v1);
+            //Criterio c2 = new Criterio();
+            //c2.setDescricao("Arquitetura");
+            //c2.setPerfil(1);
+            //c2.setPeso(3);
+            //c2.setVaga(vaga);
             
-            // Teste de Relacionamento Vaga x Critério
-            ArrayList<Criterio> criterios = new ArrayList<>();
-            criterios.add(c1);
-            criterios.add(c2);
-            v1.setCriterioList(criterios);
+            //Criterio c3 = new Criterio();
+            //c3.setDescricao("Banco de Dados NoSQL");
+            //c3.setPerfil(1);
+            //c3.setPeso(3);
+            //c3.setVaga(vaga);
             
-            // Teste de Publicar Vaga
-            Vaga gravado =  vagaService.publicarVaga(v1);
-            log.info(gravado.getId() + " - " + gravado.getCargo());
+            // Relacionamento Vaga x Critério
+            //ArrayList<Criterio> criterios = new ArrayList<>();
+            //criterios.add(c1);
+            //criterios.add(c2);
+            //criterios.add(c3);
+            //vaga.setCriterioList(criterios);
             
-            // Teste de Listar por Usuário
+            // Publicar Vaga
+            //Vaga gravado = vagaService.publicarVaga(vaga);
+            //log.info(gravado.getId() + " - " + gravado.getCargo());
+            
+            // Teste de Listar Vagas por Usuário
+            log.info("--- Vagas Cadastradas por " + empresa.getNome() + " ---");
             List<Vaga> listaVagas = vagaService.listarPorIdUsuario(empresa.getId());
             for (Vaga unitVaga : listaVagas) {
+                log.info(unitVaga.getId() + " - " + unitVaga.getCargo());
+            }           
+        } else {
+            log.info("Login Inválido!");
+        }       
+        
+        // Teste de Login - Candidato
+        log.info("--- Login Candidato ---");
+        Usuario candidato = this.logarNoSite("eric@abl.org.br", "capitu");          
+        if (candidato != null && candidato.getTipo() == 'C') {
+            
+            log.info(candidato.getId() + " - " + candidato.getNome());
+            
+            log.info("--- Vagas Pesquisadas por Cargo pelo candidato " + candidato.getNome() + " ---");
+            List<Vaga> listarPorCargo = vagaService.pesquisarVagasPorCargo("scrum");
+            for (Vaga unitVaga : listarPorCargo) {
+                log.info(unitVaga.getId() + " - " + unitVaga.getCargo());
+            }
+            
+            log.info("--- Vagas Pesquisadas por Cidade pelo candidato " + candidato.getNome() + " ---");
+            List<Vaga> listarPorCidade = vagaService.pesquisarVagasPorCidade("São Paulo");
+            for (Vaga unitVaga : listarPorCidade) {
                 log.info(unitVaga.getId() + " - " + unitVaga.getCargo());
             }
             
         } else {
             log.info("Login Inválido!");
-        }            
-            
+        }
+        
         // Teste de Criar Conta
         Usuario usuarioTeste = new Usuario();
         Usuario gravado = this.manterUsuario(usuarioTeste);

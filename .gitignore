@@ -20,6 +20,6 @@
 *.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-/VenturaHR_Cliente/target/
-/VenturaHR_Usuario/target/
-/Cliente_VenturaHR/target/
+/Cliente/target/
+/Usuario/target/
+/Empresa/target/

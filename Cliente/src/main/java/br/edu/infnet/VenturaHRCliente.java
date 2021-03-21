@@ -2,10 +2,8 @@ package br.edu.infnet;
 
 import br.edu.infnet.domain.usuarios.Usuario;
 import br.edu.infnet.infra.usuarios.UsuarioService;
-import br.edu.infnet.domain.vagas.Criterio;
 import br.edu.infnet.domain.vagas.Vaga;
 import br.edu.infnet.infra.vagas.VagaService;
-import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +36,7 @@ public class VenturaHRCliente implements CommandLineRunner {
         
         // Teste de Login - Empresa
         log.info("--- Login Empresa ---");
-        Usuario empresa = this.logarNoSite("barbara@espois.com", "321");
+        Usuario empresa = this.logarNoSite("ana@espois.com", "123");
         if (empresa != null && empresa.getTipo() == 'E') {
             log.info(empresa.getId() + " - " + empresa.getNome());
             
@@ -92,7 +90,7 @@ public class VenturaHRCliente implements CommandLineRunner {
         
         // Teste de Login - Candidato
         log.info("--- Login Candidato ---");
-        Usuario candidato = this.logarNoSite("eric@abl.org.br", "capitu");          
+        Usuario candidato = this.logarNoSite("eric@jardim.com", "123");          
         if (candidato != null && candidato.getTipo() == 'C') {
             
             log.info(candidato.getId() + " - " + candidato.getNome());

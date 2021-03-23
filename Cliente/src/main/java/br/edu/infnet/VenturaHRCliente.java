@@ -96,7 +96,7 @@ public class VenturaHRCliente implements CommandLineRunner {
             log.info(candidato.getId() + " - " + candidato.getNome());
             
             log.info("--- Vagas Pesquisadas por Cargo pelo candidato " + candidato.getNome() + " ---");
-            List<Vaga> listarPorCargo = vagaService.pesquisarVagasPorCargo("scrum");
+            List<Vaga> listarPorCargo = vagaService.pesquisarVagasPorCargo("Desenvolvedor");
             for (Vaga unitVaga : listarPorCargo) {
                 log.info(unitVaga.getId() + " - " + unitVaga.getCargo());
             }

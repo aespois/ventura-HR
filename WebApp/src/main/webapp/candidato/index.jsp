@@ -14,7 +14,7 @@
             <h1>VenturaHR - Candidato</h1>
             <h2>Bem Vindo, ${usuario.nome}!</h2>
             <hr class="my-4">
-            <button type="button" class="btn btn-outline-primary" onclick="location.href='/'">Alterar Dados</button>
+            <button type="button" class="btn btn-outline-primary" onclick="location.href='usuario/alterar.jsp'">Alterar Dados</button>
             <button type="button" class="btn btn-outline-secondary" onclick="location.href='/'">Voltar</button>
             <br><br>
             

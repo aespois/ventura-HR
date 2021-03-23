@@ -14,8 +14,8 @@
             <h1>VenturaHR - Empresa</h1>
             <h3>Bem Vindo, ${usuario.nome}!</h3>
             <hr class="my-4">
-            <button type="button" class="btn btn-success btn-lg" onclick="location.href='empresa/publicar.jsp'">Cadastrar Vaga</button> 
-            <button type="button" class="btn btn-outline-primary" onclick="location.href='/'">Alterar Dados</button>
+            <button type="button" class="btn btn-success btn-lg" onclick="location.href='empresa/publicar.jsp'">Publicar Vaga</button> 
+            <button type="button" class="btn btn-outline-primary" onclick="location.href='usuario/alterar.jsp'">Alterar Dados</button>
             <button type="button" class="btn btn-outline-secondary" onclick="location.href='/'">Voltar</button>
             <br><br>
             

@@ -43,11 +43,16 @@
                     <div class="form-group col-md-6">
                         <label for="inputCargo">Cargo:</label>
                         <input type="text" class="form-control" id="inputCargo" name="cargo" value="${vaga.cargo}">
-                    </div> 
-                    
+                    </div>                     
+                         
                     <div class="form-group col-md-4">
                         <label for="inputCidade">Cidade:</label>
-                        <input type="text" class="form-control" id="inputCidade" name="cidade" value="${vaga.cidade}">
+                        <select class="form-control" id="inputCidade">
+                            <option selected>Escolher...</option>
+                            <option value="Rio de Janeiro - RJ" name="cidade">Rio de Janeiro - RJ</option>
+                            <option value="São Paulo - SP" name="cidade">São Paulo - SP</option>
+                            <option value="Remoto - Brasil" name="cidade">Remoto - Brasil</option>
+                        </select>
                     </div>
                     
                     <div class="form-group col-md-2">
@@ -61,76 +66,65 @@
                     </div>
                 </div>
                     
-                <hr class="my-4">       
+                <hr class="my-4">                     
                 
-                <form action="cadastrarCriterio" method="post">
-                    <h4>Critérios da Vaga</h4><br> 
-                    
-                    <div class="form-row">                  
-                        <div class="form-group col-md-6">
-                            <label for="inputDescricao">Descrição:</label>
-                            <input disabled type="text" class="form-control" id="inputDescricao" name="descricao" value="${criterio.descricao}">
-                        </div> 
+                <label aria-describedby="emailHelp">Critérios da Vaga</label><br> 
+                <small id="emailHelp" class="form-text text-muted">Adicione dois critérios válidos para a Vaga:</small>
 
-                        <div class="form-group col-md-2">
-                            <label for="inputPerfil">Perfil:</label>
-                            <select disabled class="form-control" id="inputPerfil">
-                                <option selected>Escolher...</option>
-                                <option value="1" name="perfil">1 - Iniciante</option>
-                                <option value="2" name="perfil">2 - Pleno</option>
-                                <option value="3" name="perfil">3 - Sênior</option>
-                                <option value="4" name="perfil">4 - Especialista</option>
-                            </select>
-                        </div>
+                <div class="form-row">                  
+                    <div class="form-group col-md-6">
+                        <label for="inputDescricao1">Descrição:</label>
+                        <input disabled type="text" class="form-control" id="inputDescricao1" name="descricao1" value="${criterio.descricao}">
+                    </div> 
 
-                        <div class="form-group col-md-2">
-                            <label for="inputPeso">Peso:</label>
-                            <select disabled class="form-control" id="inputPeso">
-                                <option selected>Escolher...</option>
-                                <option value="1" name="peso">1 - Opcional</option>
-                                <option value="2" name="peso">2 - Desejável</option>
-                                <option value="3" name="peso">3 - Mandatório</option>
-                            </select>
-                        </div>              
-
-                        <div class="form-group col-md-2">
-                            <label for="botoesEdit">Ações:</label><br>
-                            <center>
-                                <button class="btn" type="submit"><i class="fa fa-save"></i></button>
-                            </center>                        
-                        </div>
-                    </div><br>
-                        
-                    <!-- Critérios salvos -->
-                    <div class="row">
-                        <div class="col">
-                          <h5>Cadastrados</h5>                  
-                          <table class="table table-striped" style="font-size: 14px">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Descrição:</th>
-                                    <th scope="col">Perfil:</th>
-                                    <th scope="col">Peso:</th>
-                                    <th scope="col"></th>
-                                  </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                      <th scope="row">Criterio XPTO</th>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>
-                                            <button class="btn"><i class="fa fa-edit"></i></button> | 
-                                            <button class="btn"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>                                    
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputPerfil1">Perfil:</label>
+                        <select disabled class="form-control" id="inputPerfil1">
+                            <option selected>Escolher...</option>
+                            <option value="1" name="perfil1">1 - Iniciante</option>
+                            <option value="2" name="perfil1">2 - Pleno</option>
+                            <option value="3" name="perfil1">3 - Sênior</option>
+                            <option value="4" name="perfil1">4 - Especialista</option>
+                        </select>
                     </div>
-                </form><br>    
-                        
+
+                    <div class="form-group col-md-2">
+                        <label for="inputPeso1">Peso:</label>
+                        <select disabled class="form-control" id="inputPeso1">
+                            <option selected>Escolher...</option>
+                            <option value="1" name="peso1">1 - Opcional</option>
+                            <option value="2" name="peso1">2 - Desejável</option>
+                            <option value="3" name="peso1">3 - Mandatório</option>
+                        </select>
+                    </div>              
+
+                    <div class="form-group col-md-6">
+                        <label for="inputDescricao2">Descrição:</label>
+                        <input disabled type="text" class="form-control" id="inputDescricao2" name="descricao2" value="${criterio.descricao}">
+                    </div> 
+
+                    <div class="form-group col-md-2">
+                        <label for="inputPerfil2">Perfil:</label>
+                        <select disabled class="form-control" id="inputPerfil2">
+                            <option selected>Escolher...</option>
+                            <option value="1" name="perfil2">1 - Iniciante</option>
+                            <option value="2" name="perfil2">2 - Pleno</option>
+                            <option value="3" name="perfil2">3 - Sênior</option>
+                            <option value="4" name="perfil2">4 - Especialista</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="inputPeso3">Peso:</label>
+                        <select disabled class="form-control" id="inputPeso3">
+                            <option selected>Escolher...</option>
+                            <option value="1" name="peso3">1 - Opcional</option>
+                            <option value="2" name="peso3">2 - Desejável</option>
+                            <option value="3" name="peso3">3 - Mandatório</option>
+                        </select>
+                    </div>
+                </div><br>
+
                 <button type="submit" class="btn btn-primary">Publicar Vaga</button>
                 <button type="button" class="btn btn-outline-secondary" onclick="location.href='index.jsp'">Voltar</button>    
                 

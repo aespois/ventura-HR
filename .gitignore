@@ -23,3 +23,7 @@
 /Cliente/target/
 /Usuario/target/
 /Empresa/target/
+/WebApp/target/
+Empresa/nbactions.xml
+Usuario/nbactions.xml
+WebApp/nbactions.xml

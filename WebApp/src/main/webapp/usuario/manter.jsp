@@ -4,9 +4,9 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
         <script>
         //Mascara CPF
         $(document).ready(function(){
@@ -106,12 +106,7 @@
                 <c:forEach var="erro" items="${erros}">
                     <h5>${erro.defaultMessage}</h5>
                 </c:forEach>
-            </div>
-
-            <div style="color:green">
-                <h5>${sucesso}</h5>
-            </div>              
-                        
+            </div>   
             <footer>
                 <hr class="my-4">
                 <p style="font-size: smaller" align="center">Ventura HR® - Todos os direitos reservados</p>

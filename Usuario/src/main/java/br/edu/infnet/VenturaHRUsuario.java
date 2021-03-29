@@ -9,5 +9,4 @@ public class VenturaHRUsuario {
     public static void main(String[] args) {
             SpringApplication.run(VenturaHRUsuario.class, args);
     }
-
 }

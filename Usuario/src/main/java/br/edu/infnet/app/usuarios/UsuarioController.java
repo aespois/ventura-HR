@@ -21,10 +21,10 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
        
-    //@GetMapping
-    //public Iterable<Usuario> listarUsuarios() {
-    //    return usuarioRepository.findAll();
-    //}
+    @GetMapping
+    public Iterable<Usuario> listarUsuarios() {
+        return usuarioRepository.findAll();
+    }
     
     @GetMapping(path = {"/{id}"})
     public ResponseEntity obterPorId(@PathVariable int id) {
@@ -97,6 +97,6 @@ public class UsuarioController {
                 retorno = usuarioRepository.findById(id).get();
             } catch (Exception e) {
             }
-            return retorno;
+        return retorno;
     }
 }

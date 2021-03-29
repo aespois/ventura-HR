@@ -116,15 +116,11 @@ public class Criterio implements Serializable {
             return false;
         }
         Criterio other = (Criterio) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
         return "br.edu.infnet.domain.vagas.Criterio[ id=" + id + " ]";
     }
-
 }

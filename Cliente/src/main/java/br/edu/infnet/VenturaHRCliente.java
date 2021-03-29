@@ -105,18 +105,10 @@ public class VenturaHRCliente implements CommandLineRunner {
             List<Vaga> listarPorCidade = vagaService.pesquisarVagasPorCidade("São Paulo");
             for (Vaga unitVaga : listarPorCidade) {
                 log.info(unitVaga.getId() + " - " + unitVaga.getCargo());
-            }
-            
+            }            
         } else {
             log.info("Login Inválido!");
-        }
-        
-        // Teste de Criar Conta
-        Usuario usuarioTeste = new Usuario();
-        Usuario gravado = this.manterUsuario(usuarioTeste);
-        
-        // Teste de Alterar Conta
-        
+        }     
     }
 
     private Usuario logarNoSite(String email, String senha) {
@@ -128,7 +120,6 @@ public class VenturaHRCliente implements CommandLineRunner {
             try {
                 usuario = usuarioService.obterPorEmail(email);
             } catch (Exception e) {
-                //log.info(e.getMessage());
                 if (e.getMessage().contains(NOT_FOUND)) {
                     log.info("Empresa Não Encontrada");
                 }
@@ -138,17 +129,6 @@ public class VenturaHRCliente implements CommandLineRunner {
                 retorno = usuario;
             }
         }        
-        return retorno;
-    }
-    
-    private Usuario manterUsuario(Usuario usuario) {
-        Usuario retorno = null;
-        
-        if (usuario != null && usuario.getId() == null) {
-            // Incluir usuário
-        } else if (usuario != null && usuario.getId() != null){
-            // Alterar usuário
-        }
         return retorno;
     }
 }

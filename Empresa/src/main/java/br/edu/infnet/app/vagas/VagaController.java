@@ -20,7 +20,7 @@ public class VagaController {
     @Autowired
     private VagaRepository vagaRepository;
     
-    @GetMapping // fazer o try/cath
+    @GetMapping
     public ResponseEntity listarVagas() {
         
         ResponseEntity retorno = ResponseEntity.notFound().build();
@@ -46,7 +46,7 @@ public class VagaController {
         return retorno;
     }
     
-    @PostMapping // fazer o try/cath
+    @PostMapping
     public ResponseEntity publicarVaga(@RequestBody Vaga vaga) {
         
         ResponseEntity retorno = ResponseEntity.badRequest().build();
@@ -54,9 +54,9 @@ public class VagaController {
         
         if(listaCriterio != null && !listaCriterio.isEmpty()) {
             
-            for (Criterio criterio : listaCriterio) {
+            listaCriterio.forEach(criterio -> {
                 criterio.setVaga(vaga);
-            }
+            });
             
             Vaga gravado = vagaRepository.save(vaga);
             retorno = ResponseEntity.ok().body(gravado);

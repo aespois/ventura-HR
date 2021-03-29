@@ -127,15 +127,11 @@ public class Vaga implements Serializable {
             return false;
         }
         Vaga other = (Vaga) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
         return "br.edu.infnet.domain.vagas.Vaga[ id=" + id + " ]";
     }
-    
 }

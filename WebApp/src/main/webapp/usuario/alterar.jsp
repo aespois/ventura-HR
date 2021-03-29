@@ -55,7 +55,6 @@
                        <input type="password" class="form-control" id="inputPassword4" name="senha" value="${usuario.senha}">
                     </div>             
                 </div>
-
                                    
                 <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 <button type="button" class="btn btn-outline-secondary" onclick="location.href='/'">Voltar</button> 
@@ -65,12 +64,7 @@
                 <c:forEach var="erro" items="${erros}">
                     <h5>${erro.defaultMessage}</h5>
                 </c:forEach>
-            </div>
-
-            <div style="color:green">
-                <h5>${sucesso}</h5>
-            </div>              
-                        
+            </div>                                  
             <footer>
                 <hr class="my-4">
                 <p style="font-size: smaller" align="center">Ventura HR® - Todos os direitos reservados</p>

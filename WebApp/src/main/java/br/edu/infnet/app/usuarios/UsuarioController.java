@@ -1,7 +1,10 @@
 package br.edu.infnet.app.usuarios;
 
 import br.edu.infnet.domain.usuarios.Usuario;
+import br.edu.infnet.domain.vagas.Vaga;
 import br.edu.infnet.infra.usuarios.UsuarioService;
+import br.edu.infnet.infra.vagas.VagaService;
+import java.util.List;
 import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,9 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioService usuarioService;
+    
+    @Autowired
+    private VagaService vagaService;
     
     @RequestMapping("/login")
     public ModelAndView logarNoSite(String email, String senha) {
@@ -30,9 +36,22 @@ public class UsuarioController {
                     
                     case 'E':
                         destino = "empresa/index";
+                        
+                        try {
+                            List<Vaga> publicadas = vagaService.listarPorIdUsuario(usuario.getId());
+                            retorno.addObject("publicadas", publicadas);
+                        } catch (Exception e) {
+                        }
                         break;
+                        
                     case 'C':
                         destino = "candidato/index";
+                        
+                        try {
+                            List<Vaga> publicadas = vagaService.listarVagas();
+                            retorno.addObject("publicadas", publicadas);
+                        } catch (Exception e) {
+                        }
                         break;
                 }
                 retorno.setViewName(destino);
@@ -69,8 +88,7 @@ public class UsuarioController {
                 }
                 retorno.setViewName(destino);
                 retorno.addObject("usuario", gravado);
-        }
-        
+            }        
         return retorno;
     }
     

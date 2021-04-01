@@ -8,7 +8,6 @@ public class Vaga {
     private Integer id;
     @NotBlank(message = "O campo Cargo é obrigatório")
     private String cargo;
-    @NotBlank(message = "O campo Cidade é obrigatório")
     private String cidade;
     private String formaContratacao;
     private int idUsuario;

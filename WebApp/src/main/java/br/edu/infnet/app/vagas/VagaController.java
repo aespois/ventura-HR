@@ -1,7 +1,9 @@
 package br.edu.infnet.app.vagas;
 
+import br.edu.infnet.domain.vagas.Criterio;
 import br.edu.infnet.domain.vagas.Vaga;
 import br.edu.infnet.infra.vagas.VagaService;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,15 +21,24 @@ public class VagaController {
     public ModelAndView publicarVaga(@Valid Vaga vaga, BindingResult br) {
         
         ModelAndView retorno = new ModelAndView("empresa/publicar");
+        List<Criterio> listaCriterio = vaga.getCriterioList();        
         
         if(br.hasErrors()) {
             retorno.addObject("erros", br.getFieldErrors());
             
         } else {     
-            Vaga gravada = vagaService.publicarVaga(vaga);
-            String destino = "empresa/index";
-            retorno.setViewName(destino);
-            retorno.addObject("usuario", gravada);
+            
+            if(listaCriterio != null && !listaCriterio.isEmpty()) {
+                
+                listaCriterio.forEach(criterio -> {
+                    criterio.setVaga(vaga);
+                });
+            
+                Vaga gravada = vagaService.publicarVaga(vaga);
+                String destino = "/";
+                retorno.setViewName(destino);
+                retorno.addObject("vaga", gravada);
+            }
         }
         return retorno;
     }

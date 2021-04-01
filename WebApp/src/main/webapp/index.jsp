@@ -18,54 +18,7 @@
                 <button type="button" class="btn btn-success btn-lg" onclick="location.href='usuario/manter.jsp'">Faça seu cadastro</button>
             </div>
                         
-            <div class="row">
-                <div class="col">
-                  <h3>10 Últimas Vagas Publicadas</h3>                  
-                  <table class="table table-dark" style="font-size: 14px">
-                        <thead>
-                          <tr>
-                            <th scope="col">Cargo</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Cidade</th>
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        
-                        <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td><i class="fa fa-eye" aria-hidden="true"></td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td><i class="fa fa-eye" aria-hidden="true"></td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td><i class="fa fa-eye" aria-hidden="true"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td><i class="fa fa-eye" aria-hidden="true"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td><i class="fa fa-eye" aria-hidden="true"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
+            <div class="row">                             
                 <div class="col">
                     <form action="login" method="post">
                         <h3>Acesso ao Sistema</h3>

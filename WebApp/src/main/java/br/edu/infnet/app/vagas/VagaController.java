@@ -1,5 +1,6 @@
 package br.edu.infnet.app.vagas;
 
+import br.edu.infnet.domain.usuarios.Usuario;
 import br.edu.infnet.domain.vagas.Criterio;
 import br.edu.infnet.domain.vagas.Vaga;
 import br.edu.infnet.infra.vagas.VagaService;
@@ -18,9 +19,10 @@ public class VagaController {
     private VagaService vagaService;
     
     @RequestMapping("empresa/publicarVaga") // Validar a inserção dos critérios
-    public ModelAndView publicarVaga(@Valid Vaga vaga, BindingResult br) {
+    public ModelAndView publicarVaga(@Valid Vaga vaga, Usuario usuario, BindingResult br) {
         
         ModelAndView retorno = new ModelAndView("empresa/publicar");
+        
         List<Criterio> listaCriterio = vaga.getCriterioList();        
         
         if(br.hasErrors()) {
@@ -36,6 +38,7 @@ public class VagaController {
             
                 Vaga gravada = vagaService.publicarVaga(vaga);
                 String destino = "/";
+                vaga.setIdUsuario(usuario.getId());
                 retorno.setViewName(destino);
                 retorno.addObject("vaga", gravada);
             }

@@ -20,7 +20,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="usuarioResponsavel">Responsável pela Vaga:</label>
-                        <input type="text" readonly disabled id="usuarioResponsavel" value="${vaga.idUsuario}" nome="idUsuario" aria-describedby="emailHelp">
+                        <input type="text" readonly disabled id="usuarioResponsavel" value="${usuario.nome}" nome="idUsuario" aria-describedby="emailHelp">
                         <small id="emailHelp" class="form-text text-muted">Caso este não seja seu nome, faça login novamente no sistema.</small>
                     </div>
                 </div><br>  

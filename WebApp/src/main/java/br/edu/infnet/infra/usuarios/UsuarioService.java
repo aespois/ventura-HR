@@ -15,5 +15,8 @@ public interface UsuarioService {
     @PostMapping
     Usuario inserirUsuario(Usuario usuario);
     
+    @GetMapping
+    Usuario listarUsuarios();
+    
     // Alterar usuário
 }
